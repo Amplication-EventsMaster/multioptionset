@@ -9,4 +9,5 @@ export type User = {
   username: string;
   email: string | null;
   roles: JsonValue;
+  colors?: Array<"Red" | "Blue" | "Yellow">;
 };

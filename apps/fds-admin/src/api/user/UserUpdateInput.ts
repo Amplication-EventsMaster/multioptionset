@@ -7,4 +7,5 @@ export type UserUpdateInput = {
   email?: string | null;
   password?: string;
   roles?: InputJsonValue;
+  colors?: Array<"Red" | "Blue" | "Yellow">;
 };

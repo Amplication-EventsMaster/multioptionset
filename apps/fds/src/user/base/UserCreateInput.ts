@@ -11,10 +11,11 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, MaxLength, IsOptional } from "class-validator";
+import { IsString, MaxLength, IsOptional, IsEnum } from "class-validator";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { EnumUserColors } from "./EnumUserColors";
 
 @InputType()
 class UserCreateInput {
@@ -75,6 +76,20 @@ class UserCreateInput {
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserColors,
+    isArray: true,
+  })
+  @IsEnum(EnumUserColors, {
+    each: true,
+  })
+  @IsOptional()
+  @Field(() => [EnumUserColors], {
+    nullable: true,
+  })
+  colors?: Array<"Red" | "Blue" | "Yellow">;
 }
 
 export { UserCreateInput as UserCreateInput };
