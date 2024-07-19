@@ -26,6 +26,17 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <SelectArrayInput
+          label="colors"
+          source="colors"
+          choices={[
+            { label: "red", value: "Red" },
+            { label: "blue", value: "Blue" },
+            { label: "yellow", value: "Yellow" },
+          ]}
+          optionText="label"
+          optionValue="value"
+        />
       </SimpleForm>
     </Create>
   );
